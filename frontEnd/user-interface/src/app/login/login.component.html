@@ -1,0 +1,20 @@
+<div class=" mx-auto pb-5 col-md-4 col-sm-6 mt-4  text-center containerLogin" id="containerLogin">
+    <div class=" header text-light p-2 h1 px-2 d-block ">Login</div>
+    <form [formGroup]="loginForm" class="col-md-10 mx-auto form-body " (ngSubmit)="login()">
+        <mat-form-field class="d-block" appearance="fill" color="primary" required>
+            <mat-label>Email</mat-label>
+            <input formControlName="email" type="email" matInput required placeholder="Ex. Abc@gmail.com">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint>Enter your Email here</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="d-block" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-icon matSuffix>password</mat-icon>
+            <mat-hint>Enter your Password here</mat-hint>
+        </mat-form-field>
+        <button class=" button mt-4 text-light" type="submit" mat-raised-button>Login</button>
+        <a class=" d-block mt-2" routerLink="/user/userRegister">Don't have an Account?</a>
+    </form>
+</div>

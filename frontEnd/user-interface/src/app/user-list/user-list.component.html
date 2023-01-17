@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-3">
+    <div class="container-fluid">
+        <a class=" formIcon navbar-brand">LeLafe </a>
+        <a routerLink="/user/userLogin"><button  class=" button btn text-dark" type="submit" mat-raised-button>LogOut</button></a>
+    </div>
+</nav>
+<div class="containerDatabase container pb-5 text-center col-md-4 col-sm-6 ">
+    <table class="table  border-dark table-striped table-hover ">
+        <thead class="">
+            <tr class="row ">
+                <th class="col-sm-4">Email</th>
+                <th class="col-sm-2">First Name</th>
+                <th class="col-sm-2">Last Name</th>
+                <th class="col-sm-4">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="conatiner ">
+            <tr class="row" *ngFor="let row of user.userDB;let i = index">
+                <td class="col-sm-4 ">{{row.email}}</td>
+                <td class="col-sm-2">{{ row.firstName }}</td>
+                <td class="col-sm-2">{{ row.lastName }}</td>
+                <td class="col-sm-2">
+                    <button   mat-icon-button (click)="editUser(row._id)">
+                        <mat-icon >edit</mat-icon>
+                    </button>
+                </td>
+                <td class="col-sm-2">
+                    <button  mat-icon-button (click)="deleteUser(row.email)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- *ngIf= 'user.loginForm.value.email == row.email' -->

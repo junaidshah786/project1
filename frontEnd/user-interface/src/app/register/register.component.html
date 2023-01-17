@@ -1,0 +1,43 @@
+<div  class="containerRegister text-center mx-auto pb-5 col-md-4 col-sm-6  mt-4" id="containerRegister" >
+        <div class="text-light p-2 h1 header">Register</div>
+    <div class="form-body">
+        <form [formGroup]="registerForm" class="col-md-10 mx-auto">
+            <mat-form-field class="d-block" appearance="fill"  required>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" type="email"  [readonly] = "user.editFlag"  matInput required placeholder="Ex. Abc@gmail.com">
+                <mat-error *ngIf="this.registerForm.get('email')?.hasError('required')">Please enter Email</mat-error>
+                <mat-error *ngIf="this.registerForm.get('email')?.hasError('email')">Please enter valid Email</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-hint>Enter your <strong>Email</strong> here</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="d-block"  appearance="fill" color="primary">
+                <mat-label>Password</mat-label>
+                <input matInput type="password"  formControlName="password"  required>
+                <mat-error *ngIf="this.registerForm.get('password')?.hasError('required')">Please enter Password</mat-error>
+                <mat-icon matSuffix>password</mat-icon>
+                <mat-hint>Min <strong>8</strong> characters</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="d-block"  appearance="fill"  required>
+                <mat-label>First Name</mat-label>
+                <input type="text"  formControlName="firstName" matInput required
+                    placeholder="Ex. Junaid">
+                <mat-icon matSuffix>Firstname</mat-icon>
+                <mat-hint>Enter your <strong>First</strong> Name here</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="d-block" appearance="fill"  required>
+                <mat-label>Last Name</mat-label>
+                <input type="text"  formControlName="lastName"
+                 matInput required
+                    placeholder="Ex. Shah">
+                <mat-icon matSuffix>Lastname</mat-icon>
+                <mat-hint>Enter your <strong>Last</strong> Name here</mat-hint>
+            </mat-form-field>
+            <button (click)="user.editFlag?updateUser():formRegisteration()" class="button mt-4 text-light"  mat-raised-button>{{user.editFlag?'Submit':'Register'}}</button>
+            <a *ngIf="!user.editFlag"  routerLink="/user/userLogin"  class=" d-block mt-2">Already have an Account?</a>
+            <a *ngIf="user.editFlag"  routerLink="/user/userList" (click)="user.reset()" class=" d-block mt-2">Back?</a>
+        </form>
+    </div>
+</div>
